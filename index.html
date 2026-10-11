@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your Name</title>
+  <meta name="description" content="Writing about AI, operations, and security through the lens of forward deployed engineering.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --ink: #1b2430;
+      --muted: #5b6675;
+      --line: #d9dee5;
+      --accent: #0f6e6e;
+      --serif: "Literata", Georgia, "Times New Roman", serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #14181d; --ink: #e8ecf1; --muted: #98a3b3; --line: #2e3640; --accent: #5fc4c0;
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-padding-top: 1rem; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 1.0625rem;
+      line-height: 1.7;
+    }
+    a { color: var(--accent); text-underline-offset: 3px; }
+    a:hover { text-decoration-thickness: 2px; }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+    .container { max-width: 760px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* Header */
+    header { padding: 4rem 0 2.5rem; }
+    .head-row { display: flex; gap: 2rem; align-items: center; }
+    .avatar {
+      flex: none; width: 128px; height: 128px; border-radius: 50%;
+      display: grid; place-items: center;
+      background: var(--accent); color: var(--bg);
+      font-size: 2.75rem; font-weight: 600; overflow: hidden;
+    }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    h1 { margin: 0; font-size: 2.5rem; line-height: 1.15; font-weight: 600; letter-spacing: -0.01em; }
+    .tagline { margin: .4rem 0 1rem; font-size: 1.2rem; color: var(--muted); font-style: italic; line-height: 1.45; }
+    .links { display: flex; flex-wrap: wrap; gap: .35rem 1.25rem; padding: 0; margin: 0; list-style: none; }
+    .links button {
+      font: inherit; color: var(--accent); background: none; border: 0; padding: 0;
+      cursor: pointer; text-decoration: underline; text-underline-offset: 3px;
+    }
+    #email-out { margin-top: .5rem; color: var(--muted); min-height: 1.7em; }
+
+    hr { border: 0; border-top: 1px solid var(--line); margin: 0; }
+
+    /* Timeline */
+    .history { padding: 3rem 0 4rem; }
+    .entry { display: grid; grid-template-columns: 8.5rem 1.5rem 1fr; column-gap: 1.25rem; }
+    .span { text-align: right; color: var(--muted); font-size: .95rem; padding-top: .15rem; }
+    .rail { position: relative; }
+    .rail::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: var(--line); transform: translateX(-50%); }
+    .rail::after {
+      content: ""; position: absolute; left: 50%; top: .6rem; width: 11px; height: 11px;
+      background: var(--bg); border: 2px solid var(--accent); border-radius: 50%; transform: translateX(-50%);
+    }
+    .entry:first-child .rail::before { top: .6rem; }
+    .entry:last-child .rail::before { bottom: auto; height: .6rem; }
+    .desc { padding-bottom: 2.5rem; }
+    .desc h2 { margin: 0 0 .25rem; font-size: 1.15rem; font-weight: 600; line-height: 1.4; }
+    .desc p { margin: 0 0 .75rem; max-width: 62ch; }
+    .desc ul { margin: 0 0 .75rem; padding-left: 1.2rem; max-width: 62ch; }
+    .desc li { margin-bottom: .3rem; }
+
+    footer { padding: 2rem 0 3rem; color: var(--muted); font-size: .9rem; }
+
+    @media (max-width: 640px) {
+      header { padding-top: 2.5rem; }
+      .head-row { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+      h1 { font-size: 2rem; }
+      .entry { grid-template-columns: 1.5rem 1fr; column-gap: 1rem; }
+      .span { grid-column: 2; grid-row: 1; text-align: left; padding-top: 0; }
+      .rail { grid-column: 1; grid-row: 1 / span 2; }
+      .desc { grid-column: 2; grid-row: 2; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="container">
+    <div class="head-row">
+      <!-- To use a photo: save it as me.jpg next to this file and replace the initials with <img src="me.jpg" alt="Your Name"> -->
+      <div class="avatar" aria-hidden="true">YN</div>
+      <div>
+        <h1>Your Name</h1>
+        <p class="tagline">I write about deploying AI, running operations, and securing what gets built.</p>
+        <ul class="links">
+          <li><a href="https://yourname.substack.com">Substack</a></li>
+          <li><a href="https://github.com/your-username">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/your-username">LinkedIn</a></li>
+          <li><button type="button" id="email-btn" aria-controls="email-out">Show email</button></li>
+        </ul>
+        <div id="email-out" aria-live="polite"></div>
+      </div>
+    </div>
+  </header>
+
+  <hr>
+
+  <main class="container history">
+
+    <section class="entry">
+      <div class="span">2026 – now</div>
+      <div class="rail"></div>
+      <div class="desc">
+        <h2>Writing on Substack</h2>
+        <p>I write about the work that begins after the demo: getting AI into production, keeping operations steady, and securing what gets built. The lens is forward deployed engineering, which means real customers, messy problems, and changing requirements.</p>
+        <p><a href="https://yourname.substack.com">Read the latest posts</a>, or start with these:</p>
+        <ul>
+          <li><a href="#">Post title one</a></li>
+          <li><a href="#">Post title two</a></li>
+          <li><a href="#">Post title three</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="entry">
+      <div class="span">2026</div>
+      <div class="rail"></div>
+      <div class="desc">
+        <h2>Project name</h2>
+        <p>Describe what you built, who it was for, and what changed because of it, in two or three sentences. <a href="https://github.com/your-username/project">View on GitHub</a>.</p>
+      </div>
+    </section>
+
+    <section class="entry">
+      <div class="span">20XX – 20XX</div>
+      <div class="rail"></div>
+      <div class="desc">
+        <h2>Your role at Company</h2>
+        <p>One short paragraph on what you owned and the result. Mention the customers or teams you worked with and one outcome you are proud of.</p>
+      </div>
+    </section>
+
+    <section class="entry">
+      <div class="span">20XX – 20XX</div>
+      <div class="rail"></div>
+      <div class="desc">
+        <h2>Degree, University</h2>
+        <p>Add your education, certifications, or courses that shaped how you work.</p>
+      </div>
+    </section>
+
+    <section class="entry">
+      <div class="span">Always</div>
+      <div class="rail"></div>
+      <div class="desc">
+        <h2>Outside of work</h2>
+        <p>I follow Formula 1 and watch a lot of films, and I enjoy thinking about how data and technology shape both.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <hr>
+
+  <footer class="container">
+    &copy; <span id="year">2026</span> Your Name
+  </footer>
+
+  <script>
+    // Email is assembled in the browser so scrapers don't find it in the page source.
+    // Replace the three parts below with your own address.
+    var user = "you", domain = "example", tld = "com";
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    var btn = document.getElementById("email-btn");
+    var out = document.getElementById("email-out");
+    btn.addEventListener("click", function () {
+      var addr = user + "@" + domain + "." + tld;
+      out.innerHTML = '<a href="mailto:' + addr + '">' + addr + "</a>";
+      btn.remove();
+    });
+  </script>
+</body>
+</html>
